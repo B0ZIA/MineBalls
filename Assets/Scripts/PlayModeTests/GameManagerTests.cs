@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManagerTest
 {
     [UnityTest]
-    public IEnumerator LoadGameScene()
+    public IEnumerator LoadGameSceneTest()
     {
         GameObject gameObject = new GameObject();
         GameManager gameManager = gameObject.AddComponent<GameManager>();

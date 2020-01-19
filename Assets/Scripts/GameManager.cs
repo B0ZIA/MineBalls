@@ -5,9 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     public const int GAME_SCENE_INDEX = 1;
 
 
+
+    void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
 
 	public void StartGame()
     {
@@ -19,8 +27,14 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(GAME_SCENE_INDEX);
     }
 
-    public static void GameOver()
+    public void GameOver()
     {
-        Debug.LogError("Game Over!");
+        SceneManager.LoadScene(0);
+        Debug.Log("Game Over!");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

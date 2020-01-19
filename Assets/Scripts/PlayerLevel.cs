@@ -10,6 +10,10 @@ public class PlayerLevel : MonoBehaviour
     [SerializeField]
     private Text levelText;
 
+    public delegate void EnemyLevelUp();
+    public EnemyLevelUp OnPlayerLevelUp;
+
+
 
     void Awake()
     {
@@ -26,5 +30,7 @@ public class PlayerLevel : MonoBehaviour
     {
         level++;
         levelText.text = "Level: " + level.ToString();
+
+        OnPlayerLevelUp?.Invoke();
     }
 }
